@@ -1,0 +1,154 @@
+* {
+    font-family: "Barlow", sans-serif;
+}
+
+.header{
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+.logoutBtn{
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 7px;
+    border-radius: 5px;
+}
+.logoutBtn:hover{
+    background-color: rgb(239, 143, 143);
+}
+#add-post-container{
+   
+    width: 80%;
+    margin: 20px auto;
+    display: flex;
+    justify-content: center;
+}
+#add-post-container article > h2 {
+    color: rgb(47, 47, 253);
+}
+
+#newPost-text{
+    padding: 10px;
+    margin-bottom: 10px;
+}
+#newPost-image{
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.addPost-btn{
+    width: 100px;
+    padding: 10px;
+    background-color: rgb(24, 218, 131);
+    font-weight: 500;
+    border: none;
+    border-radius: 10px;
+}
+.addPost-btn:hover{
+    color:rgb(140, 221, 185) ;
+    transition: 1s;
+    cursor: pointer;
+}
+
+#post-container{
+    width: 80%;
+    background-color: rgb(246, 227, 227);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.post{
+    padding: 15px;
+    border:solid olivedrab;
+    border-radius: 10px;
+    width: 60%;
+    margin: 20px;
+}
+
+.post-header {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.post-user-image img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.post-username{
+    margin: 0;
+}
+
+.posted-time{
+    color: rgb(156, 155, 155);
+    font-size: 15px;
+}
+
+.post-image{
+    display: flex;
+    justify-content: center;
+}
+.post-image img{
+    width: 50%;
+    border-radius: 8px;
+    margin: 15px;
+}
+
+.comment {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 10px;
+}
+
+.comment-user-image img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.comment-text-container{
+    background-color: rgb(207, 207, 244);
+    padding: 10px;
+    border-radius: 20px;
+}
+
+.comment-text-container h4, p{
+    margin: 0;
+}
+.comment-text-container h4{
+    margin-bottom: 5px;
+}
+.postComment-holder{
+    display: flex;
+    gap: 10px;
+    margin: 15px;
+}
+
+.post-comment-input-field-holder{
+    width: 60%;
+}
+
+.postComment-input-field{
+    padding: 10px;
+    outline: none;
+    border: 1px solid gray;
+    width: 90%;
+}
+.postComment-btn{
+    padding: 10px;
+    background-color: rgb(220, 67, 67);
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
