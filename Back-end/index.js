@@ -1,3 +1,4 @@
+
 const express = require('express');
 const mysql = require('mysql');
 const cors = require('cors');
@@ -103,17 +104,49 @@ app.post("/postComment", (req, res) => {
 app.post("/addNewPost", (req, res) => {
 
   // Destructure the req.body object
-  const {postedUserId, postedTime, postedText, postedImageUrl} = req.body;
+  const { postedUserId, postedTime, postedText, postedImageUrl } = req.body;
 
   //sql query
   let sqlForAddingNewPost = `INSERT INTO posts (postId, postedUserId, postedTime, postedText, postedImageUrl) VALUES (NULL, ?, ?, ?, ?);`;
 
-  let query = DB.query(sqlForAddingNewPost,[postedUserId, postedTime, postedText, postedImageUrl],(err, result) =>{
-    if(err) {
-      console.log("Error adding new post: ",err);
+  let query = DB.query(sqlForAddingNewPost, [postedUserId, postedTime, postedText, postedImageUrl], (err, result) => {
+    if (err) {
+      console.log("Error adding new post: ", err);
       throw err;
     }
-    else{
+    else {
+      res.send(result);
+    }
+  });
+});
+
+app.put("/updatePost/:postId", (res, req) => {
+  const { postId, postedText, postedImageUrl } = req.body;
+
+  let sqlForEditPost = `UPDATE posts SET postedText= ?,postedImageUrl= ? WHERE postId=?;`;
+
+  let query = DB.query(sqlForEditPost, [postId, postedText, postedImageUrl], (err, result) => {
+    if (err) {
+      console.log("Error editing post: ", err);
+      throw err;
+    }
+    else {
+      res.send(result);
+    }
+  });
+});
+
+app.delete("/deletePost/:postId", (req, res) => {
+  const postId = req.params.postId;
+
+  let sqlForDeletePost = `DELETE FROM posts WHERE postId = ?;`;
+
+  let query = DB.query(sqlForDeletePost, [postId], (err, result) => {
+    if (err) {
+      console.log("Error fetching while delete post: ", err);
+      throw err;
+    }
+    else {
       res.send(result);
     }
   });
