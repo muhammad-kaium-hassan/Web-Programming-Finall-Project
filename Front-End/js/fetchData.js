@@ -258,6 +258,69 @@ const handleAddNewPost = async () => {
 
 };
 
+// ... update JavaScript code ...
+
+const handleUpdatePost = async (postId) => {
+    
+    const postTextElement = document.querySelector(`.post[data-post-id="${postId}"] .post-text-content`);
+    const postText = postTextElement.innerText.trim();
+  
+    const postImageElement = document.querySelector(`.post[data-post-id="${postId}"] .post-image img`);
+    const postImageUrl = postImageElement.src;
+  
+    // Send a PUT request to the backend API 
+    try {
+      const res = await fetch(`http://localhost:5000/updatePost/${postId}`, {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({
+          postId,
+          postText,
+          postImageUrl,
+        }),
+      });
+  
+      const data = await res.json();
+      if (data.success) {
+        
+        postTextElement.innerText = postText;
+       
+      } else {
+        console.error("Error updating post:", data.error);
+        
+      }
+    } catch (err) {
+      console.error("Error sending update request:", err);
+      
+    }
+  };
+  
+  const handleDeletePost = async (postId) => {
+   
+    if (confirm("Are you sure you want to delete this post?")) {
+      
+      try {
+        const res = await fetch(`http://localhost:5000/deletePost/${postId}`, {
+          method: "DELETE",
+        });
+  
+        const data = await res.json();
+        if (data.success) {
+         
+          const postElement = document.querySelector(`.post[data-post-id="${postId}"]`);
+          postElement.parentNode.removeChild(postElement);
+         
+        } else {
+          console.error("Error deleting post:", data.error);
+         
+        }
+      } catch (err) {
+        console.error("Error sending delete request:", err);
+        
+      }
+    }
+  };
 
 fetchAllPost();
-
